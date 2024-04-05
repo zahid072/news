@@ -1,13 +1,16 @@
-import React from 'react'
-import Header from '../shared/header/Header'
-import { Outlet } from 'react-router-dom'
 
+import Header from '../shared/header/Header'
+import Nav from '../shared/nav/Nav'
+import CategoryNews from '../categoryNews/CategoryNews'
 
 const Home = () => {
+
+   
   return (
     <div>
         <Header/>
-        <Outlet/>
+        <Nav/>
+        <CategoryNews/>
     </div>
   )
 }
