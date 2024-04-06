@@ -6,6 +6,7 @@ import SignIn from '../pages/auth/SignIn'
 import SignUp from '../pages/auth/SignUp'
 import ErrorPage from '../pages/errorPage/ErrorPage'
 import SingleNews from '../pages/singleNews/SingleNews'
+import PrivateRoute from './PrivateRoute'
 
 
 const router = createBrowserRouter([
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
             },
             {
                 path:"/news/:newsId",
-                element:<SingleNews/>
+                element:<PrivateRoute><SingleNews/></PrivateRoute>
             },
             
         ]

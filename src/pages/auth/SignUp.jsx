@@ -20,9 +20,17 @@ const SignUp = () => {
         updateUserProfile(name, photo)
         const user = res.user;
         console.log(user)
+        e.target.name.value = "";
+        e.target.photo.value = "";
+        e.target.email.value = "";
+     e.target.password.value = "";
       })
       .catch(err =>{
         console.log(err.message)
+        e.target.name.value = "";
+        e.target.photo.value = "";
+        e.target.email.value = "";
+     e.target.password.value = "";
       })
 
   }

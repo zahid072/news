@@ -3,10 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 
 const Nav = () => {
-
-  const {user, logOut}= useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const handleSignOut = () => {
-    logOut()
+    logOut();
   };
 
   const navLinks = (
@@ -55,14 +54,17 @@ const Nav = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
+          <div className="tooltip rounded-full mr-3 tooltip-bottom" data-tip={user?.displayName}>
           <img
-            className="h-11"
+            className="h-11 tooltip tooltip-open rounded-full tooltip-bottom"
+            data-tip={user?.displayName}
             src={
               (user?.photoURL && user?.photoURL) ||
               "https://static.vecteezy.com/system/resources/thumbnails/019/879/186/small/user-icon-on-transparent-background-free-png.png"
             }
             alt=""
           />
+          </div>
 
           {!user ? (
             <Link to={"/SignIn"}>

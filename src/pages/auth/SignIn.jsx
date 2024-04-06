@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import Nav from "../shared/nav/Nav";
-import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const SignIn = () => {
-const {signInUsers} = useContext(AuthContext);
-
-
+const {signInUsers, signInGoogle} = useContext(AuthContext);
+const location = useLocation();
+const navigate = useNavigate();
+console.log(location)
 
   const handleSignIn = (e)=>{
     e.preventDefault();
@@ -16,6 +18,23 @@ const {signInUsers} = useContext(AuthContext);
     signInUsers(email, password)
     .then(res => {
       const user = res.user
+      
+      location.state ? navigate(location.state) : navigate("/category")
+      e.target.email.value = "";
+     e.target.password.value = "";
+    })
+    .catch(err =>{
+      console.log(err.message)
+      e.target.email.value = "";
+      e.target.password.value = "";
+    })
+    
+  }
+  const handleGoogleSignIn = ()=>{
+    signInGoogle()
+    .then(res => {
+      const user = res.user
+      location.state ? navigate(location.state) : navigate("/category")
     })
     .catch(err =>{
       console.log(err.message)
@@ -64,6 +83,7 @@ const {signInUsers} = useContext(AuthContext);
                 <button className="btn btn-primary">Sign In</button>
               </div>
             <p>Don't have an account? <Link to={"/signUp"} className="text-blue-500 underline">Sign Up</Link></p>
+            <button onClick={handleGoogleSignIn} className='btn flex items-center gap-2'><FcGoogle /> Google</button>
             </form>
           </div>
         </div>
