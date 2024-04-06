@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Nav from '../shared/nav/Nav'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const SignUp = () => {
 
+  const {signUpUsers, updateUserProfile} = useContext(AuthContext);
+
   const handleSignUp = (e)=>{
      e.preventDefault();
+
+      const name = e.target.name.value;
+      const photo = e.target.photo.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      signUpUsers(email, password)
+      .then(res =>{
+        updateUserProfile(name, photo)
+        const user = res.user;
+        console.log(user)
+      })
+      .catch(err =>{
+        console.log(err.message)
+      })
+
   }
   return (
     <>
@@ -36,7 +55,7 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="Photo URL"
-                name="Photo"
+                name="photo"
                 className="input input-bordered"
                 required
               />

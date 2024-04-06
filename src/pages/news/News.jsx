@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useNewsData from "../../hooks/useNewsData";
-import NewsCard from "./newsCard/NewsCard";
+import NewsCard from "../../components/newsCard/NewsCard";
+
 
 const News = () => {
   const { newsData } = useNewsData();
@@ -21,7 +22,7 @@ const News = () => {
 
   return (
     <div className="">
-      <h1 className="text-center text-xl font-bold mb-5">Dragon News Home</h1>
+      <h1 className="text-center text-xl font-bold mb-5">Dragon News Home : <span>{data.length}</span></h1>
       {data.map((newses, index) => (
         <NewsCard key={index} news={newses} />
       ))}

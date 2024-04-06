@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "../shared/nav/Nav";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignIn = () => {
+const {signInUsers} = useContext(AuthContext);
+
 
 
   const handleSignIn = (e)=>{
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    signInUsers(email, password)
+    .then(res => {
+      const user = res.user
+    })
+    .catch(err =>{
+      console.log(err.message)
+    })
   }
   return (
     <>

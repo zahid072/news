@@ -20,7 +20,7 @@ const SingleNews = () => {
       <div>
         <h1>{news.category_id}</h1>
       </div>
-      <Link className='btn btn-secondary' to={"/category"}> Go back category</Link>
+      <Link className='btn btn-secondary' to={`/category/${news.category_id}`}>All news in this category</Link>
     </div>
   )
 }
