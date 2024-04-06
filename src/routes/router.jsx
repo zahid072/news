@@ -4,9 +4,9 @@ import Root from '../layout/Root'
 import Home from '../pages/Home/Home'
 import SignIn from '../pages/auth/SignIn'
 import SignUp from '../pages/auth/SignUp'
-import CategoryNews from '../pages/categoryNews/CategoryNews'
 import ErrorPage from '../pages/errorPage/ErrorPage'
 import SingleNews from '../pages/singleNews/SingleNews'
+
 
 const router = createBrowserRouter([
     {
@@ -17,10 +17,6 @@ const router = createBrowserRouter([
             {
                 path:"/category",
                 element:<Home></Home>,
-            },
-            {
-                path:"/category",
-                element:<CategoryNews/>
             },
             {
                 path:"/signIn",
@@ -34,11 +30,16 @@ const router = createBrowserRouter([
             },
             {
                 path:"/category/:id",
-                element:<SingleNews/>,
-              
+                element:<Home/>, 
             },
+            {
+                path:"/news/:newsId",
+                element:<SingleNews/>
+            },
+            
         ]
     }, 
+    
     
 ])
 

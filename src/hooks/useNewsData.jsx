@@ -5,7 +5,7 @@ const useNewsData = () => {
 const [newsData, setNewsData] = useState([]);
 
 useEffect(() => {
-    fetch("/categories.json")
+    fetch("/news.json")
     .then(res => res.json())
     .then( data => {
         setNewsData(data)
